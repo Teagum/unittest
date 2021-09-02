@@ -9,8 +9,6 @@
 
 unsigned short n_fails;
 
-#define N 100
-#define LOOP for (size_t i = 0; i < N; i++)
 
 #define EPSILON 1e-10
 #define FP_EQUAL(_x_, _y_) \
