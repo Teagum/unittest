@@ -14,8 +14,8 @@ size_t UT_N_FAILS;
 
 
 #define EPSILON 1e-10
-#define FP_EQUAL(x, y) \
-    ((fabsl ((long double) x - (long double) y) < EPSILON) \
+#define FP_EQUAL(lhs, rhs) \
+    ((fabsl ((long double) lhs - (long double) rhs) < EPSILON) \
      ? true : false)
 
 
