@@ -6,25 +6,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "assertations.h"
 
 unsigned short n_fails;
 
 
 #define EPSILON 1e-10
-#define FP_EQUAL(_x_, _y_) \
-    ((fabsl ((long double) _x_ - (long double) _y_) < EPSILON) \
+#define FP_EQUAL(x, y) \
+    ((fabsl ((long double) x - (long double) y) < EPSILON) \
      ? true : false)
 
-/*
- * Assertions
- */
-#define ASSERT_EQUAL(_val_, _comp_) (FP_EQUAL (_val_, _comp_))
-#define ASSERT_GREATER(_val_, _comp_) (_val_ > _comp_)
-#define ASSERT_GREATER_EQ(_val_, _comp_) (_val_ >= _comp_)
-#define ASSERT_LESS(_val_, _comp) (_val_ < _comp_)
-#define ASSERT_LESS_EQ(_val_, _comp_) (_val_ <= _comp_)
-#define ASSERT_IN_RANGE(_val_, _lb_, _hb_) \
-    (ASSERT_GREATER_EQ (_val_, _lb_) && ASSERT_LESS_EQ(_val_, _hb_))
 
 #define STV(_str_) #_str_
 
