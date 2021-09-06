@@ -9,7 +9,9 @@
 #include "assertations.h"
 #include "print.h"
 
-unsigned short n_fails;
+
+size_t UT_N_FAILS;
+
 
 #define EPSILON 1e-10
 #define FP_EQUAL(x, y) \
@@ -20,7 +22,7 @@ unsigned short n_fails;
 #define SETUP               \
 do {                        \
     srand (time (NULL));    \
-    n_fails = 0;            \
+    UT_N_FAILS = 0;         \
 } while (0)
 
 
@@ -31,7 +33,7 @@ do {                        \
     }                                   \
     else                                \
     {                                   \
-        n_fails += 1;                   \
+        UT_N_FAILS += 1;                \
         fputs (UT_FAIL_MSG, stderr);    \
     }
 
@@ -43,18 +45,18 @@ do {                                                \
 } while (0)
 
 
-#define EVALUATE                                                        \
-do {                                                                    \
-    if (n_fails == 0)                                                   \
-    {                                                                   \
-        fputs ("All tests passed", stderr);                             \
-        return EXIT_SUCCESS;                                            \
-    }                                                                   \
-    else                                                                \
-    {                                                                   \
-        fprintf (stderr, "FAILURE: %d tests with errors.\n", n_fails);  \
-        return EXIT_FAILURE;                                            \
-    }                                                                   \
+#define EVALUATE                                                            \
+do {                                                                        \
+    if (UT_N_FAILS == 0)                                                    \
+    {                                                                       \
+        fputs ("All tests passed", stderr);                                 \
+        return EXIT_SUCCESS;                                                \
+    }                                                                       \
+    else                                                                    \
+    {                                                                       \
+        fprintf (stderr, "FAILURE: %d tests with errors.\n", UT_N_FAILS);   \
+        return EXIT_FAILURE;                                                \
+    }                                                                       \
 } while (0)
 
 
