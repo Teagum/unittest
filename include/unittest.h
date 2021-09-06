@@ -12,6 +12,8 @@
 
 size_t UT_N_FAILS;
 
+#define UT_SUCCESS 0
+#define UT_FAILURE 1
 
 #define EPSILON 1e-10
 #define FP_EQUAL(lhs, rhs) \
@@ -27,7 +29,7 @@ do {                        \
 
 
 #define CHECK_ERROR(res)                \
-    if (res == false)                   \
+    if (res == UT_SUCCESS)              \
     {                                   \
         fputs (UT_OK_MSG, stderr);      \
     }                                   \
