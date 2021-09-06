@@ -24,37 +24,37 @@ do {                        \
 } while (0)
 
 
-#define CHECK_ERROR(res)        \
-    if (res == false)           \
-    {                           \
-        printf ("OK\n");        \
-    }                           \
-    else                        \
-    {                           \
-        n_fails += 1;           \
-        printf ("FAILED\n");    \
+#define CHECK_ERROR(res)            \
+    if (res == false)               \
+    {                               \
+        fputs ("OK\n", stderr);     \
+    }                               \
+    else                            \
+    {                               \
+        n_fails += 1;               \
+        fputs ("FAILED\n", stderr); \
     }
 
 
-#define RUN_TEST(func_name)                 \
-do {                                        \
-    printf ("\t%-50s ... ", #func_name);    \
-    CHECK_ERROR(func_name ())               \
+#define RUN_TEST(func_name)                         \
+do {                                                \
+    fprintf (stderr, "\t%-50s ... ", #func_name);   \
+    CHECK_ERROR(func_name ())                       \
 } while (0)
 
 
-#define EVALUATE                                                            \
-do {                                                                        \
-    if (n_fails == 0)                                                       \
-    {                                                                       \
-        puts ("All tests passed");                                          \
-        return EXIT_SUCCESS;                                                \
-    }                                                                       \
-    else                                                                    \
-    {                                                                       \
-        fprintf (stdout, "FAILURE: %d tests with errors.\n", n_fails);      \
-        return EXIT_FAILURE;                                                \
-    }                                                                       \
+#define EVALUATE                                                        \
+do {                                                                    \
+    if (n_fails == 0)                                                   \
+    {                                                                   \
+        fputs ("All tests passed", stderr);                             \
+        return EXIT_SUCCESS;                                            \
+    }                                                                   \
+    else                                                                \
+    {                                                                   \
+        fprintf (stderr, "FAILURE: %d tests with errors.\n", n_fails);  \
+        return EXIT_FAILURE;                                            \
+    }                                                                   \
 } while (0)
 
 
