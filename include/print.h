@@ -4,6 +4,7 @@
 
 #define UT_OK   "OK\n"
 #define UT_FAIL "FAILED\n"
+#define UT_ERR_CNT "[%3d/%3d]"
 
 #define UT_CLEAR   "\x1b[0m"
 #define UT_GREEN   "\x1b[32m"

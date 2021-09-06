@@ -10,7 +10,11 @@
 #include "print.h"
 
 
-size_t UT_N_FAILS;
+size_t UT_N_FAILS = 0;
+
+enum UT_DEFAULTS {
+    UT_DEFAULT_TEST_RUNS = 10,
+};
 
 #define UT_SUCCESS 0
 #define UT_FAILURE 1
@@ -19,26 +23,30 @@ size_t UT_N_FAILS;
 #define SETUP               \
 do {                        \
     srand (time (NULL));    \
-    UT_N_FAILS = 0;         \
 } while (0)
 
 
-#define CHECK_ERROR(res)                \
-    if (res == UT_SUCCESS)              \
-    {                                   \
-        fputs (UT_OK_MSG, stderr);      \
-    }                                   \
-    else                                \
-    {                                   \
-        UT_N_FAILS++;                   \
-        fputs (UT_FAIL_MSG, stderr);    \
+#define CHECK_ERROR(cnt)                                                        \
+    if (cnt[0] == UT_DEFAULT_TEST_RUNS && cnt[1] == 0)                          \
+    {                                                                           \
+        fprintf (stderr, UT_ERR_CNT UT_OK_MSG, cnt[0], UT_DEFAULT_TEST_RUNS);   \
+        UT_N_FAILS++;                                                           \
+    }                                                                           \
+    else                                                                        \
+    {                                                                           \
+        fprintf (stderr, UT_FAIL_MSG, stderr);                                  \
     }
 
 
-#define RUN_TEST(func_name)                         \
-do {                                                \
-    fprintf (stderr, "\t%-50s ... ", #func_name);   \
-    CHECK_ERROR(func_name ())                       \
+#define RUN_TEST(func_name)                                         \
+do {                                                                \
+    int err_cnt[2] = { 0u, 0u };                                    \
+    fprintf (stderr, "\t%-50s ... ", #func_name);                   \
+    for (size_t i = 0; i < UT_DEFAULT_TEST_RUNS; i++)               \
+    {                                                               \
+        func_name () == UT_SUCCESS ? err_cnt[0]++ : err_cnt[1]++;   \
+    }                                                               \
+    CHECK_ERROR (err_cnt);                                          \
 } while (0)
 
 
