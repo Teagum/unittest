@@ -1,5 +1,5 @@
-#ifndef ASSERTATIONS_H
-#define ASSERTATIONS_H
+#ifndef UT_ASSERTATIONS_H
+#define UT_ASSERTATIONS_H
 
 
 #define EPSILON 1e-10
@@ -16,4 +16,4 @@
     (ASSERT_GREATER_EQ (val, lb) && ASSERT_LESS_EQ(val, hb))
 
 
-#endif  /* ASSERTATIONS_H */
+#endif  /* UT_ASSERTATIONS_H */
