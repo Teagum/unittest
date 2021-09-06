@@ -17,7 +17,7 @@ unsigned short n_fails;
      ? true : false)
 
 
-#define STV(_str_) #_str_
+#define STV(str) #str
 
 #define SETUP do {          \
     srand (time (NULL));    \
@@ -25,8 +25,8 @@ unsigned short n_fails;
 } while (0)
 
 
-#define CHECK_ERROR(_res_)      \
-    if (_res_ == false)         \
+#define CHECK_ERROR(res)        \
+    if (res == false)           \
     {                           \
         printf ("OK\n");        \
     }                           \
@@ -36,10 +36,11 @@ unsigned short n_fails;
         printf ("FAILED\n");    \
     }
 
-#define RUN_TEST(_func_)                        \
-    do {                                        \
-        printf ("\t%-50s ... ", STV(_func_));   \
-        CHECK_ERROR(_func_ ())                  \
+
+#define RUN_TEST(func)                      \
+    do {                                    \
+        printf ("\t%-50s ... ", STV(func)); \
+        CHECK_ERROR(func ())                \
     } while (0)
 
 
