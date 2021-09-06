@@ -15,11 +15,6 @@ size_t UT_N_FAILS;
 #define UT_SUCCESS 0
 #define UT_FAILURE 1
 
-#define EPSILON 1e-10
-#define FP_EQUAL(lhs, rhs) \
-    ((fabsl ((long double) lhs - (long double) rhs) < EPSILON) \
-     ? true : false)
-
 
 #define SETUP               \
 do {                        \
