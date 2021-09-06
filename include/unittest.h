@@ -10,6 +10,17 @@
 
 unsigned short n_fails;
 
+#define UT_CLEAR   "\x1b[0m"
+#define UT_GREEN   "\x1b[32m"
+#define UT_RED     "\x1b[31m"
+
+#ifdef _UT_NO_COLOR
+    #define UT_OK_MSG   "OK\n"
+    #define UT_FAIL_MSG "FAILED\n"
+#else
+    #define UT_OK_MSG   UT_GREEN "OK\n" UT_CLEAR
+    #define UT_FAIL_MSG UT_RED "FAILED\n" UT_CLEAR
+#endif
 
 #define EPSILON 1e-10
 #define FP_EQUAL(x, y) \
@@ -24,15 +35,15 @@ do {                        \
 } while (0)
 
 
-#define CHECK_ERROR(res)            \
-    if (res == false)               \
-    {                               \
-        fputs ("OK\n", stderr);     \
-    }                               \
-    else                            \
-    {                               \
-        n_fails += 1;               \
-        fputs ("FAILED\n", stderr); \
+#define CHECK_ERROR(res)                \
+    if (res == false)                   \
+    {                                   \
+        fputs (UT_OK_MSG, stderr);      \
+    }                                   \
+    else                                \
+    {                                   \
+        n_fails += 1;                   \
+        fputs (UT_FAIL_MSG, stderr);    \
     }
 
 
