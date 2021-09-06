@@ -10,10 +10,10 @@
 #include "print.h"
 
 
-size_t UT_N_FAILS = 0;
+size_t UT_N_FAILS;
 
 enum UT_DEFAULTS {
-    UT_DEFAULT_TEST_RUNS = 10,
+    UT_DEFAULT_TEST_RUNS = 100,
 };
 
 #define UT_SUCCESS 0
@@ -34,7 +34,7 @@ do {                        \
     }                                                                           \
     else                                                                        \
     {                                                                           \
-        fprintf (stderr, UT_FAIL_MSG, stderr);                                  \
+        fprintf (stderr, UT_ERR_CNT UT_FAIL_MSG, cnt[0], UT_DEFAULT_TEST_RUNS); \
     }
 
 
