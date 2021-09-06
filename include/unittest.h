@@ -19,7 +19,8 @@ unsigned short n_fails;
 
 #define STV(str) #str
 
-#define SETUP do {          \
+#define SETUP               \
+do {                        \
     srand (time (NULL));    \
     n_fails = 0;            \
 } while (0)
@@ -37,14 +38,15 @@ unsigned short n_fails;
     }
 
 
-#define RUN_TEST(func)                      \
-    do {                                    \
-        printf ("\t%-50s ... ", STV(func)); \
-        CHECK_ERROR(func ())                \
-    } while (0)
+#define RUN_TEST(func_name)                     \
+do {                                            \
+    printf ("\t%-50s ... ", STV(func_name));    \
+    CHECK_ERROR(func_name ())                   \
+} while (0)
 
 
-#define EVALUATE do {                                                       \
+#define EVALUATE                                                            \
+do {                                                                        \
     if (n_fails == 0)                                                       \
     {                                                                       \
         puts ("All tests passed");                                          \
