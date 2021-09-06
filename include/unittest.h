@@ -33,7 +33,7 @@ do {                        \
     }                                   \
     else                                \
     {                                   \
-        UT_N_FAILS += 1;                \
+        UT_N_FAILS++;                   \
         fputs (UT_FAIL_MSG, stderr);    \
     }
 
