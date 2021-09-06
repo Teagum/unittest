@@ -19,6 +19,12 @@ enum UT_DEFAULTS {
 #define UT_SUCCESS 0
 #define UT_FAILURE 1
 
+#ifndef _UT_TEST_RUNS
+    #define UT_TEST_RUNS UT_DEFAULT_TEST_RUNS
+#else
+    #define UT_TEST_RUNS _UT_TEST_RUNS
+#endif
+
 
 #define SETUP               \
 do {                        \
@@ -26,15 +32,15 @@ do {                        \
 } while (0)
 
 
-#define CHECK_ERROR(cnt)                                                        \
-    if (cnt[0] == UT_DEFAULT_TEST_RUNS && cnt[1] == 0)                          \
-    {                                                                           \
-        fprintf (stderr, UT_ERR_CNT UT_OK_MSG, cnt[0], UT_DEFAULT_TEST_RUNS);   \
-        UT_N_FAILS++;                                                           \
-    }                                                                           \
-    else                                                                        \
-    {                                                                           \
-        fprintf (stderr, UT_ERR_CNT UT_FAIL_MSG, cnt[0], UT_DEFAULT_TEST_RUNS); \
+#define CHECK_ERROR(cnt)                                            \
+    if (cnt[0] == UT_TEST_RUNS && cnt[1] == 0)                      \
+    {                                                               \
+        fprintf (stderr, UT_OK_MSG, cnt[0], UT_TEST_RUNS);          \
+        UT_N_FAILS++;                                               \
+    }                                                               \
+    else                                                            \
+    {                                                               \
+        fprintf (stderr, UT_FAIL_MSG, cnt[0], UT_TEST_RUNS);        \
     }
 
 
@@ -42,7 +48,7 @@ do {                        \
 do {                                                                \
     int err_cnt[2] = { 0u, 0u };                                    \
     fprintf (stderr, "\t%-50s ... ", #func_name);                   \
-    for (size_t i = 0; i < UT_DEFAULT_TEST_RUNS; i++)               \
+    for (size_t i = 0; i < UT_TEST_RUNS; i++)                       \
     {                                                               \
         func_name () == UT_SUCCESS ? err_cnt[0]++ : err_cnt[1]++;   \
     }                                                               \
