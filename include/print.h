@@ -2,20 +2,21 @@
 #define UT_PRINT_H
 
 
-#define UT_OK   "OK\n"
-#define UT_FAIL "FAILED\n"
+#define UT_OK      "OK\n"
+#define UT_FAIL    "FAILED\n"
 #define UT_ERR_CNT "[%3d/%3d] "
 
 #define UT_CLEAR   "\x1b[0m"
 #define UT_GREEN   "\x1b[32m"
 #define UT_RED     "\x1b[31m"
+#define UT_GREY    "\x1b[37m"
 
 #ifdef _UT_NO_COLOR
-    #define UT_OK_MSG   UT_OK
-    #define UT_FAIL_MSG UT_FAIL
+    #define UT_OK_MSG   UT_ERR_CNT UT_OK
+    #define UT_FAIL_MSG UT_ERR_CNT UT_FAIL
 #else
-    #define UT_OK_MSG   UT_GREEN UT_OK   UT_CLEAR
-    #define UT_FAIL_MSG UT_RED   UT_FAIL UT_CLEAR
+    #define UT_OK_MSG   UT_GREY UT_ERR_CNT UT_GREEN UT_OK   UT_CLEAR
+    #define UT_FAIL_MSG UT_GREY UT_ERR_CNT UT_RED   UT_FAIL UT_CLEAR
 #endif
 
 
