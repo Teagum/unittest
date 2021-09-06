@@ -9,6 +9,7 @@
 #include "assertations.h"
 #include "print.h"
 
+#define VERSION "0.0.1"
 
 size_t UT_N_FAILS;
 
