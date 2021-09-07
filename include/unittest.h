@@ -38,11 +38,11 @@ do {                        \
     if (cnt[0] == UT_TEST_RUNS && cnt[1] == 0)                      \
     {                                                               \
         fprintf (stderr, UT_OK_MSG, cnt[0], UT_TEST_RUNS);          \
-        UT_N_FAILS++;                                               \
     }                                                               \
     else                                                            \
     {                                                               \
         fprintf (stderr, UT_FAIL_MSG, cnt[0], UT_TEST_RUNS);        \
+        UT_N_FAILS++;                                               \
     }
 
 
