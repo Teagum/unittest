@@ -66,7 +66,7 @@ do {                                                                        \
     }                                                                       \
     else                                                                    \
     {                                                                       \
-        fprintf (stderr, "FAILURE: %d tests with errors.\n", UT_N_FAILS);   \
+        fprintf (stderr, "FAILURE: %zu tests with errors.\n", UT_N_FAILS);  \
         return EXIT_FAILURE;                                                \
     }                                                                       \
 } while (0)
