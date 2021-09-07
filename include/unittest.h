@@ -62,7 +62,7 @@ do {                                                                \
 do {                                                                        \
     if (UT_N_FAILS == 0)                                                    \
     {                                                                       \
-        fputs ("All tests passed", stderr);                                 \
+        fputs ("All tests passed\n", stderr);                               \
         return EXIT_SUCCESS;                                                \
     }                                                                       \
     else                                                                    \
