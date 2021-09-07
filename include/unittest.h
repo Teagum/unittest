@@ -30,6 +30,7 @@ enum UT_DEFAULTS {
 #define SETUP               \
 do {                        \
     srand (time (NULL));    \
+    UT_N_FAILS = 0;         \
 } while (0)
 
 
