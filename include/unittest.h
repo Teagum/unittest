@@ -6,26 +6,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "assertations.h"
 #include "print.h"
 
 #define VERSION "0.0.1"
 
-size_t UT_N_FAILS;
+size_t UT_N_FAILS = 0;
 
 enum UT_DEFAULTS {
     UT_DEFAULT_TEST_RUNS = 100,
 };
-
-#define UT_SUCCESS 0
-#define UT_FAILURE 1
 
 #ifndef _UT_TEST_RUNS
     #define UT_TEST_RUNS UT_DEFAULT_TEST_RUNS
 #else
     #define UT_TEST_RUNS _UT_TEST_RUNS
 #endif
-
 
 #define SETUP               \
 do {                        \
