@@ -10,7 +10,7 @@
 
 #define VERSION "0.0.1"
 
-size_t UT_N_FAILS = 0;
+unsigned int UT_N_FAILS = 0;
 
 enum UT_DEFAULTS {
     UT_DEFAULT_TEST_RUNS = 100,
